@@ -20,7 +20,7 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<any>();
-  displayedColumns = ['nombre', 'materia', 'calificacion', 'profesor', 'delete'];
+  displayedColumns = ['nombre', 'materia', 'calificacion', 'profesor', 'eliminar'];
 
 
   character$: Subscription;

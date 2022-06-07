@@ -12,7 +12,7 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
     </mat-form-field>
-
+    <!-- Columna de Alumno -->
     <div class="mat-elevation-z8 mt-4 ">
       <table *ngIf="estudiantes" #table mat-table [dataSource]="estudiantes">
         <ng-container matColumnDef="nombre">
@@ -21,7 +21,7 @@
             {{element.nombre}}
           </td>
         </ng-container>
-
+        <!-- Columna de Materia -->
         <ng-container matColumnDef="materia">
           <th mat-header-cell *matHeaderCellDef>
             Materia </th>
@@ -29,18 +29,18 @@
             {{element.materia}}
           </td>
         </ng-container>
-
+        <!-- Columna de Califiacion -->
         <ng-container matColumnDef="calificacion">
           <th mat-header-cell *matHeaderCellDef> Calificacion </th>
           <td mat-cell *matCellDef="let element" (click)="onClickRow(element)"> {{element.calificacion}} </td>
         </ng-container>
-
+        <!-- Columna de Profesor -->
         <ng-container matColumnDef="profesor">
           <th mat-header-cell *matHeaderCellDef> Profesor </th>
           <td mat-cell *matCellDef="let element"> {{element.profesor}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="delete">
+        <ng-container matColumnDef="eliminar">
           <th mat-header-cell *matHeaderCellDef>
           </th>
 
@@ -58,10 +58,10 @@
       <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons></mat-paginator>
     </div>
   </div>
-  <div *ngIf="estudiantes.length == 0">
+  <div class="rickM" *ngIf="estudiantes.length == 0">
     <h2 class="text-white">No hay alumnos para mostrar</h2>
   </div>
-  <div *ngIf="estudiantes.length == 0 && character">
+  <div class="rickM" *ngIf="estudiantes.length == 0 && character">
     <h2> {{character.name}} </h2>
     <img [src]="character.image">
   </div>
