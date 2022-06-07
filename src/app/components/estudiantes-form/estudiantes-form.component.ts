@@ -18,9 +18,11 @@ export class EstudiantesFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions = new Subscription();
     this.estudiantesForm = this.fb.group({
-      nombreEstudiante: ['', Validators.required],
-      curso: ['', Validators.required],
-      nota: ['', Validators.required]
+      nombre: ['', Validators.required],
+      materia: ['', Validators.required],
+      calificacion: ['', Validators.required],
+      profesor: ['', Validators.required]
+
     })
     this.subscriptions.add(this.estudiantesService.getEstudiantesToEdit().subscribe(
       (val) => this.estudianteToEdit = val
@@ -28,9 +30,10 @@ export class EstudiantesFormComponent implements OnInit, OnDestroy {
 
 
     if (this.estudianteToEdit) {
-      this.estudiantesForm.get('nombreEstudiante')?.patchValue(this.estudianteToEdit.nombreEstudiante);
-      this.estudiantesForm.get('curso')?.patchValue(this.estudianteToEdit.curso);
-      this.estudiantesForm.get('nota')?.patchValue(this.estudianteToEdit.nota);
+      this.estudiantesForm.get('nombre')?.patchValue(this.estudianteToEdit.nombre);
+      this.estudiantesForm.get('materia')?.patchValue(this.estudianteToEdit.materia);
+      this.estudiantesForm.get('calificacion')?.patchValue(this.estudianteToEdit.calificacion);
+      this.estudiantesForm.get('profesor')?.patchValue(this.estudianteToEdit.profesor);
     }
   }
 

@@ -6,7 +6,7 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="ancho" appearance="fill">
             <mat-label>Alumno</mat-label>
-            <input formControlName="nombreEstudiante" matInput>
+            <input formControlName="nombre" matInput>
           </mat-form-field>
         </mat-grid-tile>
 
@@ -17,14 +17,21 @@
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="ancho" appearance="fill">
             <mat-label>Materia</mat-label>
-            <input formControlName="curso" matInput>
+            <input formControlName="materia" matInput>
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="ancho" appearance="fill">
             <mat-label>Calificacion</mat-label>
-            <input formControlName="nota" matInput>
+            <input formControlName="calificacion" matInput>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="ancho" appearance="fill">
+            <mat-label>Profesor</mat-label>
+            <input formControlName="profesor" matInput>
           </mat-form-field>
         </mat-grid-tile>
 

@@ -34,7 +34,11 @@ th {
 }
 
 .barra-filtrar {
-
   border: 1px solid black;
   border-radius: 10px;
+}
+
+.icon {
+  display: flex;
+  flex-direction: row-reverse;
 }

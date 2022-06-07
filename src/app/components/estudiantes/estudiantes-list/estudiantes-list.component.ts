@@ -21,7 +21,7 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<any>();
-  displayedColumns = ['nombreEstudiante', 'curso', 'nota', 'delete'];
+  displayedColumns = ['nombre', 'materia', 'calificacion', 'profesor', 'delete'];
   constructor(private router: Router, private estudiantesService: EstudiantesService) { }
 
   ngOnInit(): void {
@@ -38,7 +38,6 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
   }
 
   borrarEstudiante(el: any) {
-
     let index = this.estudiantes.findIndex((student: { id: any; }) => student.id === el.id);
     this.estudiantes.splice(index, 1);
     this.table.renderRows();
