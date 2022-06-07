@@ -39,14 +39,12 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
 
   borrarEstudiante(el: any) {
 
-    //Eliminación de estudiante
     let index = this.estudiantes.findIndex((student: { id: any; }) => student.id === el.id);
     this.estudiantes.splice(index, 1);
     this.table.renderRows();
     this.estudiantesService.estudianteList = this.estudiantes!;
   }
 
-  //metodo para filtrado de busqueda dentro de la tabla
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -55,8 +53,6 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
   onAddElement() {
     this.router.navigate(['/add-edit-estudiantes']);
   }
-
-
 
   ngOnDestroy(): void {
     if (this.subscriptions) {
