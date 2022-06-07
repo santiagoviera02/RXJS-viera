@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { map, Subscription } from 'rxjs';
+import { map, Subscription, Observable } from 'rxjs';
 import { EstudiantesService } from 'src/app/shared/estudiantes.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ServiceService } from '../../../shared/service.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,16 +14,23 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./estudiantes-list.component.scss']
 })
 export class EstudiantesListComponent implements OnInit, OnDestroy {
-
   estudiantes: any = [];
   subscriptions: Subscription;
-
   @ViewChild('table') table: MatTable<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<any>();
   displayedColumns = ['nombre', 'materia', 'calificacion', 'profesor', 'delete'];
-  constructor(private router: Router, private estudiantesService: EstudiantesService) { }
+
+
+  character$: Subscription;
+  character: any;
+
+  constructor(private router: Router, private estudiantesService: EstudiantesService, private serviceService: ServiceService) {
+    this.character$ = this.serviceService.getCharacterO$(1).subscribe(
+      (character: any) => this.character = character
+    );
+  }
 
   ngOnInit(): void {
     this.subscriptions = new Subscription();
@@ -53,10 +61,9 @@ export class EstudiantesListComponent implements OnInit, OnDestroy {
     this.router.navigate(['/add-edit-estudiantes']);
   }
 
-  ngOnDestroy(): void {
-    if (this.subscriptions) {
-      this.subscriptions.unsubscribe();
-    }
+  ngOnDestroy() {
+    this.character$.unsubscribe();
   }
-
 }
+
+

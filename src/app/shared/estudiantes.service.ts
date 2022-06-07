@@ -6,14 +6,14 @@ import { Observable, of } from 'rxjs';
 })
 
 export class EstudiantesService {
-  estudianteList:any=[];
-  estudianteToEdit:any;
+  estudianteList: any = [];
+  estudianteToEdit: any;
   constructor() { }
 
-  getEstudiantesList():Observable<any>{
+  getEstudiantesList(): Observable<any> {
     return of(this.estudianteList)
   }
-  getEstudiantesToEdit():Observable<any>{
+  getEstudiantesToEdit(): Observable<any> {
     return of(this.estudianteToEdit);
   }
 }
