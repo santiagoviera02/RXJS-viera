@@ -1,0 +1,11 @@
+<div class="bg-div">
+  <mat-toolbar class="toolbar">
+    <span>Lista de Alumnos</span>
+    <span class="example-spacer"></span>
+    <button mat-button *ngFor="let item of menu" [routerLink]="item.redirect">{{ item.nombre }}</button>
+    <span class="example-spacer"></span>
+    <button routerLink="/logout" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
